@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Calculadora</h1>
+    <input type="text" id="input" placeholder="2+2">
+    <button onclick="calcular()">Calcular</button>
+    <p id="resultado"></p>
+
+    <script>
+        async function calcular() {
+            const expresion = document.getElementById("input").value;
+            const res = await fetch("/calcular", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ expresion })
+            });
+            const data = await res.json();
+            document.getElementById("resultado").innerText = 
+                data.resultado !== undefined ? `Resultado: ${data.resultado}` : data.error;
+        }
+    </script>
+</body>
+</html>
