@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Iniciar sesión</title>
+    <title>Login</title>
 </head>
 <body>
-    <h2>Login</h2>
+    <h2>Iniciar sesión</h2>
     {% if error %}
         <p style="color:red;">{{ error }}</p>
     {% endif %}
-    <form method="post">
+    <form method="post" action="/login">
         Usuario: <input type="text" name="usuario"><br><br>
         Contraseña: <input type="password" name="clave"><br><br>
-        <button type="submit">Ingresar</button>
+        <button type="submit">Entrar</button>
+    </form>
+
+    <h3>¿Nuevo? Regístrate aquí:</h3>
+    <form method="post" action="/registro">
+        Usuario: <input type="text" name="usuario"><br><br>
+        Contraseña: <input type="password" name="clave"><br><br>
+        <button type="submit">Registrarse</button>
     </form>
 </body>
 </html>
